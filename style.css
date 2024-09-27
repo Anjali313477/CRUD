@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.add-button button {
+    border: none;
+    outline: none;
+    color: white;
+    background-color: green;
+    width: 8%;
+    margin-left: 6%;
+    margin-top: 20px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+.edt{
+    border: none;
+    outline: none;
+    background-color: green; 
+    cursor: pointer;  
+    color: white;
+    padding-block: 4px;
+    padding-inline: 12px;
+    font-size: medium;
+}
+.dlt{
+    border: none;
+    outline: none;
+    background-color:red; 
+    cursor: pointer; 
+    color: white; 
+    padding-block: 4px;
+    padding-inline: 12px;
+    font-size: medium;
+}
+.heading h2 {
+    border: 1px solid red;
+    margin-block: 30px;
+    text-align: center;
+    color: green;
+    font-size: 2.4rem;
+}
+
+.table {
+    width: 95%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    border: 1px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+
+.data-table tr:hover{
+    background-color: #dcdde1;
+}
