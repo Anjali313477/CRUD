@@ -7,10 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
-
 <body>
     <div class="add-button">
         <button onclick="showForm()">+ADD</button>
@@ -66,34 +65,35 @@
             <div class="user-info">
                 <div>
                     <label for="">Name</label>
-                    <input type="text" name="" id="">
+                    <input type="text" name="" id="name">
                 </div>
                 <div>
                     <label for="">Age</label>
-                    <input type="number" name="" id="">
+                    <input type="number" name="" id="age">
                 </div>
                 <div>
                     <label for="">Country</label>
-                    <input type="text" value="India" readonly>
+                    <input type="text" value="India" readonly id="country">
 
                 </div>
                 <div>
                     <label for="">City</label>
-                    <input type="text">
+                    <input type="text" id="city">
                 </div>
                 <div>
                     <label for="">Mobile</label>
-                    <input type="number">
+                    <input type="number" id="number">
                 </div>
             </div>
             <div class="user-info">
                 <div>
                     <label for="">Email Address</label>
-                    <input type="text">
+                    <input type="text" id="email">
                 </div>
                 <div>
                     <label for="">Gender</label>
-                    <select class="gndr">
+                    <select class="gndr" id="gender">
+                        <option value="" selected disabled>Select one option</option>
                         <option value="male">Male</option>
                         <option value="Female">Female</option>
                         <option value="other">Other</option>
@@ -101,31 +101,47 @@
                 </div>
                 <div>
                     <label for="">State</label>
-                    <select class="st">
-                        <option value="almora">Almora</option>
-                        <option value="bageshwar">Bageshwar</option>
-                        <option value="chamoli">Chamoli</option>
-                        <option value="champawat">Champawat</option>
-                        <option value="dehradun">Dehradun</option>
-                        <option value="haridwar">Haridwar</option>
-                        <option value="nainital">Nainital</option>
-                        <option value="pauri-garhwal">Pauri Garhwal</option>
-                        <option value="pithoragarh">Pithoragarh</option>
-                        <option value="rudraprayag">Rudraprayag</option>
-                        <option value="tehri-garhwal">Tehri Garhwal</option>
-                        <option value="udhamsingh-nagar">Udham Singh Nagar</option>
-                        <option value="uttarkashi">Uttarkashi</option>
+                    <select class="st" id="state">
+                        <option value="" selected disabled>Select one option</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Benga</option>
                     </select>
                 </div>
                 <div>
                     <label for="">Pin Code</label>
-                    <input type="number">
+                    <input type="number" id="pincode">
                 </div>
             </div>
         </div>
-        <button class="btn">Register</button>
+        <button class="btn" onclick="registerForm()">Register</button>
     </form>
     <script src="script.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 
 </html>
