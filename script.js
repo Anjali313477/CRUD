@@ -12,6 +12,27 @@ function showTable() {
     document.querySelector('form').classList.add('hide');
 }
 
+function viewData() {
+    let table = document.querySelector('.data-table');
+    var object = localStorage.getItem('object');
+    var objectdata = JSON.parse(object);
+    var elements = ""
+    objectdata.map(record => {
+        elements += `<tr>
+         <td>${record.Name}</td>
+         <td>${record.Email}</td>
+         <td>${record.Age}</td>
+         <td>${record.State}</td>
+         <td>${record.Number}</td>
+        <td>
+           <button class="edt"onclick={editData(${record.id})} >Edit</button>
+            <button class="dlt"onclick={deleteData(${record.id})}>Delete</butteon>
+        </td>`
+    })
+    table.innerHTML = elements;
+    document.querySelector("form").reset();
+}
+
 function registerForm() {
     event.preventDefault();
     let name = document.querySelector("#name").value.trim();
@@ -31,6 +52,11 @@ function registerForm() {
         swal(" Name is required!", "", "warning");
         return false;
     }
+    if (name.length < 3) {
+        swal("Please Enter Proper Name", "", "warning");
+        return false;
+    }
+
     if (!chr.test(name)) {
         swal(" Name should contain only Letters", "", "warning")
         return false;
@@ -72,6 +98,10 @@ function registerForm() {
         swal("Valid Pincode Number is required!", "", "warning");
         return false;
     }
+    if (pincode.length < 5) {
+        swal("Valid Pincode Number is required!", "", "warning");
+        return false;
+    }
     if (number == "") {
         swal("Mobile Number is required!", "", "warning");
         return false;
@@ -81,4 +111,20 @@ function registerForm() {
         return false;
     }
 
+    let data = [{
+        Name: name,
+        Email: email,
+        Age: age,
+        Gender: gender,
+        State: state,
+        City: city,
+        PinCode: pincode,
+        Number: number
+    }]
+
+
+
+    localStorage.setItem("object", JSON.stringify(data))
+    showTable();
+    viewData();
 }
