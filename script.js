@@ -1,38 +1,3 @@
-function showForm() {
-    document.querySelector('.add-button').classList.add("hide");
-    document.querySelector('.table').classList.add("hide");
-    document.querySelector('.heading').classList.add("hide")
-    document.querySelector('form').classList.remove('hide');
-}
-
-function showTable() {
-    document.querySelector('.add-button').classList.remove("hide");
-    document.querySelector('.table').classList.remove("hide");
-    document.querySelector('.heading').classList.remove("hide")
-    document.querySelector('form').classList.add('hide');
-}
-
-function viewData() {
-    let table = document.querySelector('.data-table');
-    var object = localStorage.getItem('object');
-    var objectdata = JSON.parse(object);
-    var elements = ""
-    objectdata.map(record => {
-        elements += `<tr>
-         <td>${record.Name}</td>
-         <td>${record.Email}</td>
-         <td>${record.Age}</td>
-         <td>${record.State}</td>
-         <td>${record.Number}</td>
-        <td>
-           <button class="edt"onclick={editData(${record.id})} >Edit</button>
-            <button class="dlt"onclick={deleteData(${record.id})}>Delete</butteon>
-        </td>`
-    })
-    table.innerHTML = elements;
-    document.querySelector("form").reset();
-}
-
 function registerForm() {
     event.preventDefault();
     let name = document.querySelector("#name").value.trim();
@@ -127,4 +92,39 @@ function registerForm() {
     localStorage.setItem("object", JSON.stringify(data))
     showTable();
     viewData();
+}
+
+function viewData() {
+    let table = document.querySelector('.data-table');
+    var object = localStorage.getItem('object');
+    var objectdata = JSON.parse(object);
+    var elements = ""
+    objectdata.map(record => {
+        elements += `<tr>
+         <td>${record.Name}</td>
+         <td>${record.Email}</td>
+         <td>${record.Age}</td>
+         <td>${record.State}</td>
+         <td>${record.Number}</td>
+        <td>
+           <button class="edt"onclick={editData(${record.id})} >Edit</button>
+            <button class="dlt"onclick={deleteData(${record.id})}>Delete</butteon>
+        </td>`
+    })
+    table.innerHTML = elements;
+    document.querySelector("form").reset();
+}
+
+function showForm() {
+    document.querySelector('.add-button').classList.add("hide");
+    document.querySelector('.table').classList.add("hide");
+    document.querySelector('.heading').classList.add("hide")
+    document.querySelector('form').classList.remove('hide');
+}
+
+function showTable() {
+    document.querySelector('.add-button').classList.remove("hide");
+    document.querySelector('.table').classList.remove("hide");
+    document.querySelector('.heading').classList.remove("hide")
+    document.querySelector('form').classList.add('hide');
 }

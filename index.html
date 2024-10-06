@@ -54,12 +54,12 @@
     </table>
 
 
-    <form action="" class="hide">
+    <form action="" class="hide" onsubmit="registerForm()">
         <div class="heading">
             <h3>Registration Here!</h3>
         </div>
         <div>
-            <button class="bck-button" onclick="showTbale()"><i class="fa-solid fa-backward"></i> BACK</button>
+            <button type="button" class="bck-button" onclick="showTable()"><i class="fa-solid fa-backward"></i> BACK</button>
         </div>
         <div class="info-area flex">
             <div class="user-info">
@@ -138,10 +138,9 @@
                 </div>
             </div>
         </div>
-        <button class="btn" onclick="registerForm()">Register</button>
+        <button class="btn" type="submit">Register</button>
     </form>
     <script src="script.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
-
 </html>
