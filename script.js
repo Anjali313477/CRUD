@@ -76,7 +76,7 @@ function registerForm() {
         return false;
     }
 
-    let allData = JSON.parse(localStorage.getItem("object"));
+    let allData = JSON.parse(localStorage.getItem("object")) || [];
     let data = [{
         Name: name,
         Email: email,
@@ -97,7 +97,7 @@ function registerForm() {
 function viewData() {
     let table = document.querySelector('.data-table');
     var object = localStorage.getItem('object');
-    var objectdata = JSON.parse(object);
+    var objectdata = JSON.parse(object) || [];
     var elements = ""
     objectdata.map(record => {
         elements += `<tr>
