@@ -76,6 +76,7 @@ function registerForm() {
         return false;
     }
 
+    let allData = JSON.parse(localStorage.getItem("object"));
     let data = [{
         Name: name,
         Email: email,
@@ -86,10 +87,9 @@ function registerForm() {
         PinCode: pincode,
         Number: number
     }]
+    allData.push(data);
+    localStorage.setItem("object", JSON.stringify(allData));
 
-
-
-    localStorage.setItem("object", JSON.stringify(data))
     showTable();
     viewData();
 }
