@@ -77,7 +77,7 @@ function registerForm() {
     }
 
     let allData = JSON.parse(localStorage.getItem("object")) || [];
-    let data = [{
+    let data = {
         Name: name,
         Email: email,
         Age: age,
@@ -86,7 +86,7 @@ function registerForm() {
         City: city,
         PinCode: pincode,
         Number: number
-    }]
+    }
     allData.push(data);
     localStorage.setItem("object", JSON.stringify(allData));
 
