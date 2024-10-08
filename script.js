@@ -93,27 +93,37 @@ function registerForm() {
     showTable();
     viewData();
 }
-
 function viewData() {
     let table = document.querySelector('.data-table');
     var object = localStorage.getItem('object');
+
     var objectdata = JSON.parse(object) || [];
-    var elements = ""
-    objectdata.map(record => {
+    var elements = '';
+    if (objectdata.length === 0) {
         elements += `<tr>
-         <td>${record.Name}</td>
-         <td>${record.Email}</td>
-         <td>${record.Age}</td>
-         <td>${record.State}</td>
-         <td>${record.Number}</td>
-        <td>
-           <button class="edt"onclick={editData(${record.id})} >Edit</button>
-            <button class="dlt"onclick={deleteData(${record.id})}>Delete</butteon>
-        </td>`
-    })
-    table.innerHTML = elements;
-    document.querySelector("form").reset();
+            <t>Data Not Found</td>
+            </tr>`;
+    } else {
+        elements = "";
+        objectdata.map(record => {
+            elements += `<tr>
+                <td>${record.Name}</td>
+                <td>${record.Email}</td>
+                <td>${record.Age}</td>
+                <td>${record.State}</td>
+                <td>${record.Number}</td>
+                <td>
+                    <button class="edt" onclick="editData(${record.id})">Edit</button>
+                    <button class="dlt" onclick="deleteData(${record.id})">Delete</button>
+                </td>
+            </tr>`;
+        });
+    }
+
+    table.innerHTML = elements;  // Assign elements to table
+    document.querySelector("form").reset();  // Reset the form
 }
+
 
 function showForm() {
     document.querySelector('.add-button').classList.add("hide");
