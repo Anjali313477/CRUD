@@ -145,3 +145,9 @@ label {
     margin-inline: auto;
     display: block;
 }
+.table td.no-data{
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
+    } 

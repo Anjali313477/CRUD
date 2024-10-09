@@ -77,7 +77,10 @@ function registerForm() {
     }
 
     let allData = JSON.parse(localStorage.getItem("object")) || [];
+    let newId = allData.length?
+    allData[allData.length-1].id+1:1;
     let data = {
+        id:newId,
         Name: name,
         Email: email,
         Age: age,
@@ -101,12 +104,13 @@ function viewData() {
     var elements = '';
     if (objectdata.length === 0) {
         elements += `<tr>
-            <t>Data Not Found</td>
+            <td class="no-data">Data Not Found</td>
             </tr>`;
     } else {
         elements = "";
         objectdata.map(record => {
             elements += `<tr>
+                <td>${record.id}</td>
                 <td>${record.Name}</td>
                 <td>${record.Email}</td>
                 <td>${record.Age}</td>
@@ -119,9 +123,8 @@ function viewData() {
             </tr>`;
         });
     }
-
-    table.innerHTML = elements;  // Assign elements to table
-    document.querySelector("form").reset();  // Reset the form
+    table.innerHTML = elements;
+    document.querySelector("form").reset(); 
 }
 
 
