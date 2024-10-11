@@ -1,3 +1,4 @@
+let mode = "insert";
 function registerForm() {
     event.preventDefault();
     let name = document.querySelector("#name").value.trim();
@@ -75,7 +76,7 @@ function registerForm() {
         swal("Valid Mobile Number is required!", "", "warning");
         return false;
     }
-
+   if(mode== "insert"){
     let allData = JSON.parse(localStorage.getItem("object")) || [];
     let newId = allData.length?
     allData[allData.length-1].id+1:1;
@@ -90,12 +91,21 @@ function registerForm() {
         PinCode: pincode,
         Number: number
     }
-    allData.push(data);
     localStorage.setItem("object", JSON.stringify(allData));
-
+    allData.push(data);
     showTable();
     viewData();
+   }
+
+   if (mode=="update"){
+    alert("Update Function call")
+   }
 }
+
+
+
+
+
 function viewData() {
     let table = document.querySelector('.data-table');
     var object = localStorage.getItem('object');
@@ -128,6 +138,8 @@ function viewData() {
 }
 
 
+
+
 function showForm() {
     document.querySelector('.add-button').classList.add("hide");
     document.querySelector('.table').classList.add("hide");
@@ -135,9 +147,38 @@ function showForm() {
     document.querySelector('form').classList.remove('hide');
 }
 
+
+
+
 function showTable() {
     document.querySelector('.add-button').classList.remove("hide");
     document.querySelector('.table').classList.remove("hide");
     document.querySelector('.heading').classList.remove("hide")
     document.querySelector('form').classList.add('hide');
+}
+
+
+
+
+
+
+function editData(id) {
+
+    document.querySelector('form').classList.remove("hide")
+    document.querySelector('.table').classList.add("hide")
+    document.querySelector('.add-button').classList.add("hide")
+
+    let object = localStorage.getItem("object");
+    let objectdata = JSON.parse(object);
+    let data = objectdata.find(data=> data.id == id)
+
+    document.querySelector('#name').value = data.Name;
+    document.querySelector('#email').value = data.Email;
+    document.querySelector('#number').value = data.Number;
+    document.querySelector('#age').value = data.Age;
+    document.querySelector('#state').value = data.State;
+    document.querySelector('#city').value = data.City; 
+    document.querySelector('#pincode').value = data.PinCode;
+    document.querySelector('#gender').value = data.Gender;
+
 }
