@@ -1,5 +1,6 @@
-let mode = "insert";
-function registerForm() {
+let mode = "Insert";
+let oldDataId;
+function saveData() {
     event.preventDefault();
     let name = document.querySelector("#name").value.trim();
     let age = document.querySelector("#age").value.trim();
@@ -76,30 +77,53 @@ function registerForm() {
         swal("Valid Mobile Number is required!", "", "warning");
         return false;
     }
-   if(mode== "insert"){
-    let allData = JSON.parse(localStorage.getItem("object")) || [];
-    let newId = allData.length?
-    allData[allData.length-1].id+1:1;
-    let data = {
-        id:newId,
-        Name: name,
-        Email: email,
-        Age: age,
-        Gender: gender,
-        State: state,
-        City: city,
-        PinCode: pincode,
-        Number: number
+
+
+
+    if (mode == "Insert") {
+        let allData = JSON.parse(localStorage.getItem("object")) || [];
+        let newId = allData.length ?
+            allData[allData.length - 1].id + 1 : 1;
+
+        let data = {
+            id: newId,
+            Name: name,
+            Email: email,
+            Age: age,
+            Gender: gender,
+            State: state,
+            City: city,
+            PinCode: pincode,
+            Number: number
+        }
+        allData.push(data);
+        localStorage.setItem("object", JSON.stringify(allData));
+
+    } else if (mode == "Update") {
+        let object = localStorage.getItem("object");
+        let allData= JSON.parse(object);
+       // let data = allData.find(data => data.id == oldDataId)
+    
+
+        let dataIndex = allData.findIndex(e => e.id == oldDataId);
+
+        if (dataIndex != -1) {
+            allData[dataIndex].Name = name;
+            allData[dataIndex].Age = age;
+            allData[dataIndex].Email = email;
+            allData[dataIndex].Gender = gender;
+            allData[dataIndex].Number = number;
+            allData[dataIndex].State = state;
+            allData[dataIndex].PinCode = pincode;
+            allData[dataIndex].City = city;
+    
+            localStorage.setItem("object", JSON.stringify(allData));
+        } else {
+            alert("data not found !");
+        }
     }
-    localStorage.setItem("object", JSON.stringify(allData));
-    allData.push(data);
     showTable();
     viewData();
-   }
-
-   if (mode=="update"){
-    alert("Update Function call")
-   }
 }
 
 
@@ -134,7 +158,7 @@ function viewData() {
         });
     }
     table.innerHTML = elements;
-    document.querySelector("form").reset(); 
+    document.querySelector("form").reset();
 }
 
 
@@ -160,24 +184,24 @@ function showTable() {
 
 
 
-
-
 function editData(id) {
-
+    mode = "Update";
     document.querySelector('form').classList.remove("hide")
     document.querySelector('.table').classList.add("hide")
     document.querySelector('.add-button').classList.add("hide")
 
     let object = localStorage.getItem("object");
     let objectdata = JSON.parse(object);
-    let data = objectdata.find(data=> data.id == id)
+    let data = objectdata.find(e => e.id == id)
+
+    oldDataId= data.id;
 
     document.querySelector('#name').value = data.Name;
     document.querySelector('#email').value = data.Email;
     document.querySelector('#number').value = data.Number;
     document.querySelector('#age').value = data.Age;
     document.querySelector('#state').value = data.State;
-    document.querySelector('#city').value = data.City; 
+    document.querySelector('#city').value = data.City;
     document.querySelector('#pincode').value = data.PinCode;
     document.querySelector('#gender').value = data.Gender;
 
