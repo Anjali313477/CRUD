@@ -102,9 +102,6 @@ function saveData() {
     } else if (mode == "Update") {
         let object = localStorage.getItem("object");
         let allData= JSON.parse(object);
-       // let data = allData.find(data => data.id == oldDataId)
-    
-
         let dataIndex = allData.findIndex(e => e.id == oldDataId);
 
         if (dataIndex != -1) {
@@ -205,4 +202,12 @@ function editData(id) {
     document.querySelector('#pincode').value = data.PinCode;
     document.querySelector('#gender').value = data.Gender;
 
+}
+
+function deleteData(id){
+    let object = localStorage.getItem("object");
+    let objectdata = JSON.parse(object);
+    objectdata = objectdata.filter(e => e.id !== id);
+    localStorage.setItem("object", JSON.stringify(objectdata));
+    viewData() 
 }
